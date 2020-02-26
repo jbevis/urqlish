@@ -6,6 +6,7 @@ import * as serviceWorker from './serviceWorker';
 
 import { Provider, Client, dedupExchange, fetchExchange } from 'urql';
 import { cacheExchange } from '@urql/exchange-graphcache';
+import { BrowserRouter } from 'react-router-dom';
 
 const cache = cacheExchange();
 const client = new Client({
@@ -14,9 +15,11 @@ const client = new Client({
 });
 
 ReactDOM.render(
-  <Provider value={client}>
-    <App />
-  </Provider>,
+  <BrowserRouter>
+    <Provider value={client}>
+      <App />
+    </Provider>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
